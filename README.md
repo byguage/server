@@ -1,1 +1,1 @@
-# server
+# Fox服务器联盟-Fox Server Alliance
