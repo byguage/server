@@ -152,8 +152,8 @@
     transition: transform 0.25s ease;
   }
   .img img.zoomed {
-    transform: scale(1.5); 
-    z-index: 1; 
+    transform: scale(1.5); /* 放大图片 */
+    z-index: 1; /* 确保放大后的图片位于最顶层 */
   }
 </style>
 </head>
@@ -168,12 +168,15 @@
     <li><img src="//picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/f515ebf0754a1e27e26d1c437462e57b48ee56227ac0286942162d511c0044c3dcb55d422ba20e348d20026dcac5d3de?pictype=scale&from=30013&version=3.3.3.3&fname=84D91F4147A756B36FAA06CD1217B57D.png&size=750" alt=""></li>
   </ul>
 <script>
+  // Add click event listener to each image
   const images = document.querySelectorAll('.img img');
   images.forEach(img => {
     img.addEventListener('click', function() {
+      // Remove 'zoomed' class from all images
       images.forEach(image => {
         image.classList.remove('zoomed');
       });
+      // Toggle 'zoomed' class for clicked image
       this.classList.toggle('zoomed');
     });
   });
