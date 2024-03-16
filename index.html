@@ -151,10 +151,13 @@
     max-height: 230px;
     transition: transform 0.25s ease;
   }
-  .img img:hover {
-    transform: scale(1.2);
+  .img img.zoomed {
+    transform: scale(1.5); 
+    z-index: 1; 
   }
 </style>
+</head>
+<body>
   <ul class="img">
     <li><img src="//picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/771d65b5f6956d5daf89c0274651573c51f14bc269a4057b0e0d8cce1abd7a5c4a7704d77f07f3f69438d10a022fe267?pictype=scale&from=30013&version=3.3.3.3&fname=illust_90390512_20230604_224656.png&size=750" alt=""></li>
     <li><img src="//picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/ec047975af31d8dee1efaf03335b27a72284e164690cb23bf884d7b0b57d60d787990a8525875421aef439c17f5567e1?pictype=scale&from=30013&version=3.3.3.3&fname=8C1D97C0CDD69D825512BADA3444935A.png&size=750" alt=""></li>
@@ -168,6 +171,9 @@
   const images = document.querySelectorAll('.img img');
   images.forEach(img => {
     img.addEventListener('click', function() {
+      images.forEach(image => {
+        image.classList.remove('zoomed');
+      });
       this.classList.toggle('zoomed');
     });
   });
