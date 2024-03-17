@@ -74,10 +74,10 @@
     let isNightMode = false;
     modeButton.addEventListener('click', function() {
         if (isNightMode) {
-        document.body.classList.toggle('night-mode');
+	document.body.classList.add('night_mode');
             isNightMode = false;
         } else {
-        document.body.classList.toggle('night-mode');
+        document.body.classList.remove('night_mode');
             isNightMode = true;
         }
         modeButton.querySelector('.icon-1').classList.toggle('active');
