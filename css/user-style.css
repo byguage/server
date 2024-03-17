@@ -6,6 +6,10 @@
 	-webkit-tap-highlight-color: transparent
 }
 
+img{
+  filter: invert(1) hue-rotate(180deg);
+}
+
 .night_mode {
     background-color: #000000;
     color: #ffffff;
