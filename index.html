@@ -438,6 +438,12 @@
         </svg>
     </div>
 </div>
+html[theme='dark-mode'] {
+    filter: invert(1) hue-rotate(180deg);
+  }
+  
+  html[theme='dark-mode'] img:not(.no-invert) {
+    filter: invert(1) hue-rotate(180deg);
 <script>
     // 获取滚动按钮、模式按钮和全屏按钮的元素
     const scrollButton = document.getElementById('scrollButton');
@@ -461,41 +467,28 @@ window.addEventListener('scroll', function() {
         scrollButton.classList.remove('active');
     }
 });
-
-// 添加或移除night_mode类
+	
 let isNightMode = false;
+
 modeButton.addEventListener('click', function() {
     isNightMode = !isNightMode;
+
     if (isNightMode) {
-        document.body.classList.add('night_mode');
+        // 切换到暗黑模式
+        document.documentElement.setAttribute('theme', 'dark-mode');
         modeButton.style.backgroundColor = 'black';
         modeButton.style.color = 'white';
     } else {
-        document.body.classList.remove('night_mode');
+        // 切换回正常模式
+        document.documentElement.removeAttribute('theme');
         modeButton.style.backgroundColor = 'white';
         modeButton.style.color = 'black';
     }
+
+    // 切换按钮图标的活动状态
     modeButton.querySelector('.icon-1').classList.toggle('active');
     modeButton.querySelector('.icon-2').classList.toggle('active');
 });
-
-// 创建night_mode样式
-const nightModeStyle = `
-  .night_mode img:not(.no-invert) {
-    filter: invert(1) hue-rotate(180deg);
-  }
-  
-  .night_mode {
-    filter: invert(1) hue-rotate(180deg);
-  }
-`;
-
-// 将night_mode样式添加到页面
-const styleTag = document.createElement('style');
-styleTag.textContent = nightModeStyle;
-document.head.appendChild(styleTag);
-	
-
     // 添加全屏按钮的点击事件处理程序
 let isFullScreen = false;
 fullScreenButton.addEventListener('click', function() {
