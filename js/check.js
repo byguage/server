@@ -61,6 +61,7 @@ function getDeviceType() {
     }
 }
 function openMinecraft() {
+    event.preventDefault(); 
     var isMinecraftInstalled = false;
     var iframe = document.createElement('iframe');
     iframe.style.display = 'none';
@@ -85,6 +86,5 @@ function openMinecraft() {
             }
         }
         document.body.removeChild(iframe); 
-    }, 0); 
-    event.preventDefault();
+    }, 100); 
 });
