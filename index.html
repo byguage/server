@@ -71,12 +71,12 @@
 
     // 添加模式按钮的点击事件处理程序
         let isNightMode = false;
-    modeButton.addEventListener('click', function() {
+        modeButton.addEventListener('click', function() {
         if (isNightMode) {
-        document.body.classList.toggle('day_white');
+        document.body.classList.add('night_mode');
             isNightMode = false;
         } else {
-        document.body.classList.toggle('day_black');
+        document.body.classList.remove('night_mode');
             isNightMode = true;
         }
         modeButton.querySelector('.icon-1').classList.toggle('active');
