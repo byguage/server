@@ -453,10 +453,18 @@
     let isNightMode = false;
     modeButton.addEventListener('click', function() {
         isNightMode = !isNightMode;
-            if (isNightMode) {
-        document.body.classList.add('night_mode'); // 修改这里
+             if (isNightMode) {
+        // 切换为夜间模式
+        document.body.classList.add('night_mode');
+        // 改变按钮颜色或透明度
+        modeButton.style.backgroundColor = 'black';
+        modeButton.style.color = 'white';
     } else {
-        document.body.classList.remove('night_mode'); // 修改这里
+        // 切换为日间模式
+        document.body.classList.remove('night_mode');
+        // 恢复按钮原本的颜色或透明度
+        modeButton.style.backgroundColor = 'white';
+        modeButton.style.color = 'black';
     }
         modeButton.querySelector('.icon-1').classList.toggle('active');
         modeButton.querySelector('.icon-2').classList.toggle('active');
