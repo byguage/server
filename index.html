@@ -470,13 +470,9 @@ modeButton.addEventListener('click', function() {
     if (isNightMode) {
         // 切换到暗黑模式
         document.documentElement.setAttribute('theme', 'dark-mode');
-        modeButton.style.backgroundColor = 'black';
-        modeButton.style.color = 'white';
     } else {
         // 切换回正常模式
         document.documentElement.removeAttribute('theme');
-        modeButton.style.backgroundColor = 'white';
-        modeButton.style.color = 'black';
     }
 
     // 切换按钮图标的活动状态
