@@ -60,7 +60,7 @@ function getDeviceType() {
         return 'Unknown';
     }
 }
-function openMinecraft() {
+function openMinecraft(event) {
     event.preventDefault(); 
     var isMinecraftInstalled = false;
     var iframe = document.createElement('iframe');
@@ -86,5 +86,5 @@ function openMinecraft() {
             }
         }
         document.body.removeChild(iframe); 
-    }, 100);
+    }, 100); 
 }
