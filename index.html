@@ -462,26 +462,39 @@ window.addEventListener('scroll', function() {
     }
 });
 
-   // 添加模式按钮的点击事件处理程序
+// 添加或移除night_mode类
 let isNightMode = false;
 modeButton.addEventListener('click', function() {
     isNightMode = !isNightMode;
     if (isNightMode) {
-        // 切换为夜间模式
         document.body.classList.add('night_mode');
-        // 改变按钮颜色或透明度
         modeButton.style.backgroundColor = 'black';
         modeButton.style.color = 'white';
     } else {
-        // 切换为日间模式
         document.body.classList.remove('night_mode');
-        // 恢复按钮原本的颜色或透明度
         modeButton.style.backgroundColor = 'white';
         modeButton.style.color = 'black';
     }
     modeButton.querySelector('.icon-1').classList.toggle('active');
     modeButton.querySelector('.icon-2').classList.toggle('active');
 });
+
+// 创建night_mode样式
+const nightModeStyle = `
+  .night_mode img:not(.no-invert) {
+    filter: invert(1) hue-rotate(180deg);
+  }
+  
+  .night_mode {
+    filter: invert(1) hue-rotate(180deg);
+  }
+`;
+
+// 将night_mode样式添加到页面
+const styleTag = document.createElement('style');
+styleTag.textContent = nightModeStyle;
+document.head.appendChild(styleTag);
+	
 
     // 添加全屏按钮的点击事件处理程序
 let isFullScreen = false;
