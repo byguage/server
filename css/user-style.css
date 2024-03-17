@@ -11,8 +11,7 @@ img{
 }
 
 .night_mode {
-    background-color: #000000;
-    color: #ffffff;
+ filter: invert(1) hue-rotate(180deg);
 }
 
 .fox_action {
