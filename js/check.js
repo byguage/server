@@ -85,6 +85,6 @@ function openMinecraft() {
             }
         }
         document.body.removeChild(iframe); 
-    }, 2000); 
+    }, 0); 
     event.preventDefault();
 });
