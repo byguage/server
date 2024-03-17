@@ -6,14 +6,6 @@
 	-webkit-tap-highlight-color: transparent
 }
 
-.night_mode img:not(.no-invert) {
-  filter: invert(1) hue-rotate(180deg);
-}
-
-.night_mode {
- filter: invert(1) hue-rotate(180deg);
-}
-
 .fox_action {
 	position: fixed;
 	bottom: 90px;
