@@ -6,12 +6,12 @@
 	-webkit-tap-highlight-color: transparent
 }
 
-.day_mode .mode_button {
+.day_mode {
     background-color: #ffffff;
     color: #000000;
 }
 
-.night_mode .mode_button {
+.night_mode {
     background-color: #1a1a1a;
     color: #ffffff;
 }
