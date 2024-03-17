@@ -41,3 +41,9 @@ fullScreenButton.addEventListener('click', function() {
         icon2.style.display = 'none';
     }
 });
+document.getElementById('minecraftLink').addEventListener('click', function(event) {
+    var ua = navigator.userAgent.toLowerCase(); 
+    if (ua.match(/QQ/i) == "qq") {
+    plus.runtime.openURL("https://www.mc.sccc.top");
+    }
+});
