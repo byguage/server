@@ -445,15 +445,28 @@
     const fullScreenButton = document.getElementById('fullScreenButton');
 
     // 添加滚动按钮的点击事件处理程序
-    scrollButton.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+scrollButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // 切换按钮状态，移除'active'类
+    scrollButton.classList.remove('active');
+});
 
-    // 添加模式按钮的点击事件处理程序
-    let isNightMode = false;
-    modeButton.addEventListener('click', function() {
-        isNightMode = !isNightMode;
-             if (isNightMode) {
+// 添加滚动事件监听器，以便在页面滚动时更新滚动按钮的状态
+window.addEventListener('scroll', function() {
+    // 如果页面已经滚动到顶部，则将滚动按钮的状态设置为激活
+    if (window.scrollY === 0) {
+        scrollButton.classList.add('active');
+    } else {
+        // 否则，移除激活状态
+        scrollButton.classList.remove('active');
+    }
+});
+
+   // 添加模式按钮的点击事件处理程序
+let isNightMode = false;
+modeButton.addEventListener('click', function() {
+    isNightMode = !isNightMode;
+    if (isNightMode) {
         // 切换为夜间模式
         document.body.classList.add('night_mode');
         // 改变按钮颜色或透明度
@@ -466,23 +479,32 @@
         modeButton.style.backgroundColor = 'white';
         modeButton.style.color = 'black';
     }
-        modeButton.querySelector('.icon-1').classList.toggle('active');
-        modeButton.querySelector('.icon-2').classList.toggle('active');
-    });
+    modeButton.querySelector('.icon-1').classList.toggle('active');
+    modeButton.querySelector('.icon-2').classList.toggle('active');
+});
 
     // 添加全屏按钮的点击事件处理程序
-    let isFullScreen = false;
-    fullScreenButton.addEventListener('click', function() {
-        // 切换到全屏模式
-        if (!isFullScreen) {
-            document.documentElement.requestFullscreen();
-        } else {
-            document.exitFullscreen();
-        }
-        isFullScreen = !isFullScreen;
-        fullScreenButton.querySelector('.icon-1').classList.toggle('active');
-        fullScreenButton.querySelector('.icon-2').classList.toggle('active');
-    });
+let isFullScreen = false;
+fullScreenButton.addEventListener('click', function() {
+    // 切换到全屏模式
+    if (!isFullScreen) {
+        document.documentElement.requestFullscreen();
+    } else {
+        document.exitFullscreen();
+    }
+    isFullScreen = !isFullScreen;
+
+    // 切换图标的显示状态
+    const icon1 = fullScreenButton.querySelector('.icon-1');
+    const icon2 = fullScreenButton.querySelector('.icon-2');
+    if (isFullScreen) {
+        icon1.style.display = 'none';
+        icon2.style.display = '';
+    } else {
+        icon1.style.display = '';
+        icon2.style.display = 'none';
+    }
+});
 </script>
               <p>
             Copyright © 2023~<script>document.write(new Date().getFullYear());</script> FOX服务器  All rights reserved. <img src="//icp.gov.moe/images/ico64.png" style="width:18px;margin-bottom:2px" class="el-image__inner"><a href="https://icp.gov.moe/?keyword=20240044" target="_blank">萌ICP备20240044号</a> 
