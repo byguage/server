@@ -11,10 +11,10 @@
 }
 
 .night-mode img,
-.night-mode image,
-.night-mode [style*="background-image"] {
-    filter: invert(0%);
+.night-mode svg {
+    filter: invert(0%) !important;
 }
+
 .fox_action {
 	position: fixed;
 	bottom: 90px;
