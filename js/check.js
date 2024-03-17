@@ -60,7 +60,7 @@ function getDeviceType() {
         return 'Unknown';
     }
 }
-function openMinecraft() {
+document.getElementById('minecraftLink').addEventListener('click', function() {
     var isMinecraftInstalled = false;
     var iframe = document.createElement('iframe');
     iframe.style.display = 'none';
@@ -85,5 +85,6 @@ function openMinecraft() {
             }
         }
         document.body.removeChild(iframe); 
-    }, 2000); 
-}
+    }, 2000); // 
+    event.preventDefault();
+});
