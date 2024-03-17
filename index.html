@@ -365,11 +365,9 @@
                     </div>
                 </div></div>
             </div> <!-- .row -->
-            
           </div>
         </div>
 *注：以上所有数据并非实时更新，请以实际为准</div>
-            
             <link rel="stylesheet" href="css/plugins.css">
             <link rel="stylesheet" href="css/style1.css">
             <section class="wrapper">
@@ -456,25 +454,17 @@
     </div>
 </div>
 <script>
-    // 获取滚动按钮、模式按钮和全屏按钮的元素
     const scrollButton = document.getElementById('scrollButton');
     const modeButton = document.getElementById('modeButton');
     const fullScreenButton = document.getElementById('fullScreenButton');
-
-    // 添加滚动按钮的点击事件处理程序
 scrollButton.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // 切换按钮状态，移除'active'类
     scrollButton.classList.remove('active');
 });
-
-// 添加滚动事件监听器，以便在页面滚动时更新滚动按钮的状态
 window.addEventListener('scroll', function() {
-    // 如果页面已经滚动到顶部以下 100px，则将滚动按钮的状态设置为激活
     if (window.scrollY > 100) {
         scrollButton.classList.add('active');
     } else {
-        // 否则，移除激活状态
         scrollButton.classList.remove('active');
     }
 });
@@ -482,28 +472,21 @@ let isNightMode = false;
 modeButton.addEventListener('click', function() {
     isNightMode = !isNightMode;
     if (isNightMode) {
-        // 切换到暗黑模式
         document.documentElement.setAttribute('theme', 'dark-mode');
     } else {
-        // 切换回正常模式
         document.documentElement.removeAttribute('theme');
     }
-
-    // 切换按钮图标的活动状态
     modeButton.querySelector('.icon-1').classList.toggle('active');
     modeButton.querySelector('.icon-2').classList.toggle('active');
 });
-    // 添加全屏按钮的点击事件处理程序
 let isFullScreen = false;
 fullScreenButton.addEventListener('click', function() {
-    // 切换到全屏模式
     if (!isFullScreen) {
         document.documentElement.requestFullscreen();
     } else {
         document.exitFullscreen();
     }
     isFullScreen = !isFullScreen;
-    // 切换图标的显示状态
     const icon1 = fullScreenButton.querySelector('.icon-1');
     const icon2 = fullScreenButton.querySelector('.icon-2');
     if (isFullScreen) {
