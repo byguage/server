@@ -453,12 +453,11 @@
     let isNightMode = false;
     modeButton.addEventListener('click', function() {
         isNightMode = !isNightMode;
-        if (isNightMode) {
-            element.classList.add('night_mode');
-        } else {
-            element.classList.remove('night_mode');
-
-        }
+            if (isNightMode) {
+        document.body.classList.add('night_mode'); // 修改这里
+    } else {
+        document.body.classList.remove('night_mode'); // 修改这里
+    }
         modeButton.querySelector('.icon-1').classList.toggle('active');
         modeButton.querySelector('.icon-2').classList.toggle('active');
     });
