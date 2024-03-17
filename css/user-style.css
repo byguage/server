@@ -10,6 +10,11 @@
     filter: invert(100%);
 }
 
+.night-mode img,
+.night-mode image,
+.night-mode [style*="background-image"] {
+    filter: invert(0%);
+}
 .fox_action {
 	position: fixed;
 	bottom: 90px;
