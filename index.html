@@ -73,15 +73,12 @@
     let isNightMode = false;
     modeButton.addEventListener('click', function() {
         if (isNightMode) {
-            // 切换到白天模式
-            // 可以在这里添加切换到白天模式的逻辑
+        document.body.classList.toggle('night-mode');
             isNightMode = false;
         } else {
-            // 切换到夜间模式
-            // 可以在这里添加切换到夜间模式的逻辑
+        document.body.classList.toggle('night-mode');
             isNightMode = true;
         }
-        // 切换模式按钮的图标状态
         modeButton.querySelector('.icon-1').classList.toggle('active');
         modeButton.querySelector('.icon-2').classList.toggle('active');
     });
