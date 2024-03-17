@@ -1,6 +1,6 @@
 const scrollButton = document.getElementById('scrollButton');
-    const modeButton = document.getElementById('modeButton');
-    const fullScreenButton = document.getElementById('fullScreenButton');
+const modeButton = document.getElementById('modeButton');
+const fullScreenButton = document.getElementById('fullScreenButton');
 scrollButton.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     scrollButton.classList.remove('active');
@@ -48,3 +48,42 @@ document.getElementById('minecraftLink').addEventListener('click', function(even
     plus.runtime.openURL("https://www.mc.sccc.top");
     }
 });
+function getDeviceType() {
+    var userAgent = navigator.userAgent.toLowerCase();
+    if (/windows/.test(userAgent)) {
+        return 'Windows';
+    } else if (/iphone|ipad|ipod/.test(userAgent)) {
+        return 'iOS';
+    } else if (/android/.test(userAgent)) {
+        return 'Android';
+    } else {
+        return 'Unknown';
+    }
+}
+function openMinecraft() {
+    var isMinecraftInstalled = false;
+    var iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = 'minecraft://';
+    document.body.appendChild(iframe);
+    setTimeout(function() {
+        if (document.body.contains(iframe)) {
+            alert('您的系统中未安装 Minecraft 或者无法处理 minecraft:// 协议链接。');
+            var deviceType = getDeviceType();
+            switch(deviceType) {
+                case 'Windows':
+                    window.location.href = 'https://mc.minebbs.com/#/windows';
+                    break;
+                case 'iOS':
+                    window.location.href = 'https://mc.minebbs.com/#/ios';
+                    break;
+                case 'Android':
+                    window.location.href = 'https://mc.minebbs.com/#/';
+                    break;
+                default:
+                    break;
+            }
+        }
+        document.body.removeChild(iframe); 
+    }, 2000); 
+}
