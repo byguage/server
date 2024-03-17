@@ -453,8 +453,8 @@ scrollButton.addEventListener('click', function() {
 
 // 添加滚动事件监听器，以便在页面滚动时更新滚动按钮的状态
 window.addEventListener('scroll', function() {
-    // 如果页面已经滚动到顶部，则将滚动按钮的状态设置为激活
-    if (window.scrollY === 0) {
+    // 如果页面已经滚动到顶部以下 100px，则将滚动按钮的状态设置为激活
+    if (window.scrollY > 100) {
         scrollButton.classList.add('active');
     } else {
         // 否则，移除激活状态
