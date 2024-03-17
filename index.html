@@ -70,17 +70,22 @@
     });
 
     // 添加模式按钮的点击事件处理程序
-    let isNightMode = false;
-    modeButton.addEventListener('click', function() {
+        let isNightMode = false;
+        modeButton.addEventListener('click', function() {
         if (isNightMode) {
-        document.body.classList.toggle('night-mode');
+            document.body.classList.toggle('night-mode');
+            modeButton.querySelector('.icon-1').classList.toggle('active');
+            modeButton.querySelector('.icon-2').classList.toggle('active');
             isNightMode = false;
         } else {
-        document.body.classList.toggle('night-mode');
+            document.body.classList.toggle('night-mode');
+            modeButton.querySelector('.icon-1').classList.toggle('active');
+            modeButton.querySelector('.icon-2').classList.toggle('active');
             isNightMode = true;
         }
-        modeButton.querySelector('.icon-1').classList.toggle('active');
-        modeButton.querySelector('.icon-2').classList.toggle('active');
+        // 调整按钮样式
+        modeButton.style.backgroundColor = isNightMode ? '#fff' : '#000';
+        modeButton.style.color = isNightMode ? '#000' : '#fff';
     });
 
     // 添加全屏按钮的点击事件处理程序
