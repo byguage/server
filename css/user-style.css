@@ -6,13 +6,9 @@
 	-webkit-tap-highlight-color: transparent
 }
 
-.night-mode {
+.night-mode img:not(.no-invert),
+.night-mode svg:not(.no-invert) {
     filter: invert(100%);
-}
-
-.night-mode img,
-.night-mode svg {
-    filter: invert(0%) !important;
 }
 
 .fox_action {
