@@ -73,36 +73,31 @@
     // 添加模式按钮的点击事件处理程序
     let isNightMode = false;
     modeButton.addEventListener('click', function() {
-        isNightMode = !isNightMode; 
         if (isNightMode) {
-            document.body.classList.add('night_mode');
+        document.body.classList.toggle('night-mode');
+            isNightMode = false;
         } else {
-            document.body.classList.remove('night_mode');
+        document.body.classList.toggle('night-mode');
+            isNightMode = true;
         }
         modeButton.querySelector('.icon-1').classList.toggle('active');
         modeButton.querySelector('.icon-2').classList.toggle('active');
     });
 
+    // 添加全屏按钮的点击事件处理程序
+    let fullScreen = false;
     fullScreenButton.addEventListener('click', function() {
-    // 切换到全屏模式
-    if (document.fullscreenElement) {
-        document.exitFullscreen().then(() => {
-            // 切换图标
-            fullScreenButton.querySelector('.icon-1').classList.toggle('active');
-            fullScreenButton.querySelector('.icon-2').classList.toggle('active');
-        }).catch(err => {
-            console.error('Failed to exit fullscreen mode:', err);
-        });
-    } else {
-        document.documentElement.requestFullscreen().then(() => {
-            // 切换图标
-            fullScreenButton.querySelector('.icon-1').classList.toggle('active');
-            fullScreenButton.querySelector('.icon-2').classList.toggle('active');
-        }).catch(err => {
-            console.error('Failed to enter fullscreen mode:', err);
-        });
-    }
-});
+        // 切换到全屏模式
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+		fullScreen = false;
+        } else {
+            document.documentElement.requestFullscreen();
+		fullScreen = true;
+        }
+	    fullScreenButton.querySelector('.icon-1').classList.toggle('active');
+        fullScreenButton.querySelector('.icon-2').classList.toggle('active');
+    });
 </script>
     <body>
       <link rel="stylesheet" href="css/plugins.css" />
