@@ -41,6 +41,7 @@
 	transition: visibility 0.35s, -webkit-transform 0.35s;
 	transition: visibility 0.35s, transform 0.35s;
 	transition: visibility 0.35s, transform 0.35s, -webkit-transform 0.35s
+	pointer-events: auto;
 }
 
 .fox_action_item.scroll.active {
@@ -56,6 +57,7 @@
 	transition: opacity 0.85s, -webkit-transform 0.85s;
 	transition: transform 0.85s, opacity 0.85s;
 	transition: transform 0.85s, opacity 0.85s, -webkit-transform 0.85s
+	pointer-events: auto;
 }
 
 .fox_action_item.mode svg.active {
