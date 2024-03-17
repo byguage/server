@@ -6,6 +6,10 @@
 	-webkit-tap-highlight-color: transparent
 }
 
+.night-mode {
+    filter: invert(100%);
+}
+
 .fox_action {
 	position: fixed;
 	bottom: 90px;
