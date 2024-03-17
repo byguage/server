@@ -44,6 +44,7 @@ fullScreenButton.addEventListener('click', function() {
 document.getElementById('minecraftLink').addEventListener('click', function(event) {
     var ua = navigator.userAgent.toLowerCase(); 
     if (ua.match(/QQ/i) == "qq") {
+    alert('正在跳转至系统浏览器');
     plus.runtime.openURL("https://www.mc.sccc.top");
     }
 });
