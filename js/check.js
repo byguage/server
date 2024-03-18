@@ -44,7 +44,7 @@ fullScreenButton.addEventListener('click', function() {
 document.getElementById('minecraftLink').addEventListener('click', function(event) {
     var ua = navigator.userAgent.toLowerCase(); 
     if (ua.match(/QQ/i) == "qq") {
-        alert('正在跳转至系统浏览器');
+        alert('请使用系统浏览器打开');
         var scriptElement = document.createElement('script');
         scriptElement.src = 'https://open.mobile.qq.com/sdk/qqapi.js?_bid=152';
         document.head.appendChild(scriptElement);
