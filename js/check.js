@@ -41,6 +41,13 @@ fullScreenButton.addEventListener('click', function() {
         icon2.style.display = 'none';
     }
 });
+function executeMinecraftLink(event) {
+    if (!shouldExecuteMinecraftLink(event)) {
+        event.preventDefault();
+    } else {
+        openMinecraft(event);
+    }
+}
 document.getElementById('minecraftLink').addEventListener('click', function(event) {
     var ua = navigator.userAgent.toLowerCase(); 
     var conf = { qqjump: 1 };
