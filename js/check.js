@@ -46,7 +46,7 @@ document.getElementById('minecraftLink').addEventListener('click', function(even
     var conf = { qqjump: 1 };
     // if (ua.match(/QQ/i) == "qq") {
     if ((ua.indexOf('QQ/') !== -1 || ua.indexOf('MicroMessenger') !== -1) && conf.qqjump === 1) {
-        alert('正在跳转至系统浏览器');
+        alert('请使用系统浏览器');
         var scriptElement = document.createElement('script');
         scriptElement.src = 'https://open.mobile.qq.com/sdk/qqapi.js?_bid=152';
         document.head.appendChild(scriptElement);
