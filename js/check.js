@@ -43,15 +43,13 @@ fullScreenButton.addEventListener('click', function() {
 });
 document.getElementById('minecraftLink').addEventListener('click', function(event) {
     var ua = navigator.userAgent.toLowerCase(); 
-    if (ua.match(/QQ/i) == "qq") {
-    alert('正在跳转至系统浏览器');
-    var qqScript = document.createElement('script');
+    if (ua.match(/QQ/i)) {
+        alert('正在跳转至系统浏览器');
+        var qqScript = document.createElement('script');
         qqScript.src = "https://open.mobile.qq.com/sdk/qqapi.js?_bid=152";
         document.head.appendChild(qqScript);
-
-        // 加载完成后打开 URL
         qqScript.onload = function() {
-            mqq.ui.openUrl({ target: 2, url: "http://www.mc.sccc.top" });
+        mqq.ui.openUrl({ target: 2, url: "http://www.mc.sccc.top" });
         };
     }
 });
