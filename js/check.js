@@ -84,31 +84,33 @@ function executeMinecraftLink(event) {
             return 'Unknown';
         }
     }
-    function openMinecraft(event) {
-        event.preventDefault(); 
-        var isMinecraftInstalled = false;
-        var iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = 'minecraft://';
-        document.body.appendChild(iframe);
-        setTimeout(function() {
-            if (document.body.contains(iframe)) {
-                alert('您的系统中未安装 Minecraft 或者无法处理 minecraft:// 协议链接。');
-                var deviceType = getDeviceType();
-                switch(deviceType) {
-                    case 'Windows':
-                        window.location.href = 'https://mc.minebbs.com/#/windows';
-                        break;
-                    case 'iOS':
-                        window.location.href = 'https://mc.minebbs.com/#/ios';
-                        break;
-                    case 'Android':
-                        window.location.href = 'https://mc.minebbs.com/#/';
-                        break;
-                    default:
-                        break;
-                }
-            }
-            document.body.removeChild(iframe); 
-        }, 3000); 
+function openMinecraft(event) {
+    event.preventDefault(); 
+    var iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = 'minecraft://';
+    document.body.appendChild(iframe);
+    setTimeout(function() {
+        if (document.body.contains(iframe)) {
+            document.body.removeChild(iframe);
+            alert('无法打开 Minecraft，可能未安装或浏览器不支持 Minecraft 协议。');
+            handleMinecraftNotFound();
+        }
+    }, 1000); 
+}
+function handleMinecraftNotFound() {
+    var deviceType = getDeviceType();
+    switch(deviceType) {
+        case 'Windows':
+            window.location.href = 'https://mc.minebbs.com/#/windows';
+            break;
+        case 'iOS':
+            window.location.href = 'https://mc.minebbs.com/#/ios';
+            break;
+        case 'Android':
+            window.location.href = 'https://mc.minebbs.com/#/';
+            break;
+        default:
+            break;
     }
+}
