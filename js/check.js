@@ -97,7 +97,7 @@ function openMinecraft(event) {
                 handleMinecraftNotFound();
             }
         }
-    }, 1000);
+    }, 100);
 }
 var isMinecraftOpened = false; 
 window.addEventListener('blur', function() {
