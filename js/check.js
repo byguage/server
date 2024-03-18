@@ -61,6 +61,7 @@ function executeMinecraftLink(event) {
         img.style.width = '100%';
         img.style.height = '100%';
         img.style.objectFit = 'cover'; 
+        img.style.zIndex = '9999'; // 设置层叠顺序
         document.body.appendChild(img);
         // var scriptElement = document.createElement('script');
         // scriptElement.src = 'https://open.mobile.qq.com/sdk/qqapi.js?_bid=152';
