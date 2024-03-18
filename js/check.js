@@ -50,6 +50,7 @@ document.getElementById('minecraftLink').addEventListener('click', function(even
         document.head.appendChild(scriptElement);
         mqq.ui.openUrl({ target: 2, url:"https://www.mc.sccc.top"});
         };
+     return;
     }
 });
 function getDeviceType() {
