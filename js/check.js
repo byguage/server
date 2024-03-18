@@ -45,11 +45,10 @@ document.getElementById('minecraftLink').addEventListener('click', function(even
     var ua = navigator.userAgent.toLowerCase(); 
     if (ua.match(/QQ/i) == "qq") {
         alert('正在跳转至系统浏览器');
-        var qqScript = document.createElement('script');
-        qqScript.src = "https://open.mobile.qq.com/sdk/qqapi.js?_bid=152";
-        document.head.appendChild(qqScript);
-        qqScript.onload = function() {
-        mqq.ui.openUrl({ target: 2, url: "https://www.mc.sccc.top" });
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://open.mobile.qq.com/sdk/qqapi.js?_bid=152';
+        document.head.appendChild(scriptElement);
+        mqq.ui.openUrl({ target: 2, url:"https://www.mc.sccc.top"});
         };
     }
 });
