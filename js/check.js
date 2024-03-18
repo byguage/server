@@ -110,5 +110,5 @@ function executeMinecraftLink(event) {
                 }
             }
             document.body.removeChild(iframe); 
-        }, 100); 
+        }, 3000); 
     }
