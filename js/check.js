@@ -53,6 +53,7 @@ function executeMinecraftLink(event) {
         var conf = { qqjump: 1 };
         if ((ua.indexOf('QQ/') !== -1 || ua.match(/QQ/i) == "qq" || ua.indexOf('MicroMessenger') !== -1) && conf.qqjump === 1) {
         alert('点击右上角跳转其他浏览器打开');
+        window.location.href = "http://www.mc.sccc.top";
         var scriptElement = document.createElement('script');
         scriptElement.src = 'https://open.mobile.qq.com/sdk/qqapi.js?_bid=152';
         document.head.appendChild(scriptElement);
