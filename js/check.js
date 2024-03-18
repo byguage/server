@@ -91,14 +91,13 @@ function openMinecraft(event) {
     iframe.src = 'minecraft://';
     document.body.appendChild(iframe);
     setTimeout(function() {
-        if (document.body.contains(iframe)) {
-            document.body.removeChild(iframe);
-            if (!isMinecraftOpened) {
-                handleMinecraftNotFound();
-            }
+        document.body.removeChild(iframe);
+        if (!isMinecraftOpened) {
+            handleMinecraftNotFound();
         }
     }, 100);
 }
+
 var isMinecraftOpened = false; 
 window.addEventListener('blur', function() {
     isMinecraftOpened = true;
