@@ -51,9 +51,10 @@ document.getElementById('minecraftLink').addEventListener('click', function(even
         scriptElement.src = 'https://open.mobile.qq.com/sdk/qqapi.js?_bid=152';
         document.head.appendChild(scriptElement);
         mqq.ui.openUrl({ target: 2, url:"https://www.mc.sccc.top"});
-        return;
+        return false; 
     }
-});
+    return true; 
+}
 function getDeviceType() {
     var userAgent = navigator.userAgent.toLowerCase();
     if (/windows/.test(userAgent)) {
