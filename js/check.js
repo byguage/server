@@ -93,10 +93,16 @@ function openMinecraft(event) {
     setTimeout(function() {
         if (document.body.contains(iframe)) {
             document.body.removeChild(iframe);
-            handleMinecraftNotFound();
+            if (!isMinecraftOpened) {
+                handleMinecraftNotFound();
+            }
         }
-    }, 3000); 
+    }, 3000);
 }
+var isMinecraftOpened = false; 
+window.addEventListener('blur', function() {
+    isMinecraftOpened = true;
+});
 function handleMinecraftNotFound() {
     alert('无法打开 Minecraft，可能未安装或浏览器不支持 Minecraft 协议。');
     var deviceType = getDeviceType();
