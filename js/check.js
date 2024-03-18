@@ -53,11 +53,19 @@ function executeMinecraftLink(event) {
         var conf = { qqjump: 1 };
         if ((ua.indexOf('QQ/') !== -1 || ua.match(/QQ/i) == "qq" || ua.indexOf('MicroMessenger') !== -1) && conf.qqjump === 1) {
         alert('点击右上角跳转其他浏览器打开');
-        window.location.href = "http://www.mc.sccc.top";
-        var scriptElement = document.createElement('script');
-        scriptElement.src = 'https://open.mobile.qq.com/sdk/qqapi.js?_bid=152';
-        document.head.appendChild(scriptElement);
-        mqq.ui.openUrl({ target: 2, url:"https://www.mc.sccc.top"});
+        var img = new Image();
+        img.src = '//picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/a2e42f14390ceb895147059f3cb0bc6003d2f1c9ca8b0e8c65a1f7a5c180f0c6b3d97285be769b261604b6d4a0753db8?pictype=scale&from=30013&version=3.3.3.3&fname=icon.png&size=750'; 
+        img.style.position = 'fixed';
+        img.style.top = '0';
+        img.style.left = '0';
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.style.objectFit = 'cover'; 
+        document.body.appendChild(img);
+        // var scriptElement = document.createElement('script');
+        // scriptElement.src = 'https://open.mobile.qq.com/sdk/qqapi.js?_bid=152';
+        // document.head.appendChild(scriptElement);
+        // mqq.ui.openUrl({ target: 2, url:"https://www.mc.sccc.top"});
         return false; 
         }
         return true; 
