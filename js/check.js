@@ -90,15 +90,16 @@ function openMinecraft(event) {
     iframe.style.display = 'none';
     iframe.src = 'minecraft://';
     document.body.appendChild(iframe);
-    setTimeout(function() {
-        if (document.body.contains(iframe)) {
-            document.body.removeChild(iframe);
-            alert('无法打开 Minecraft，可能未安装或浏览器不支持 Minecraft 协议。');
-            handleMinecraftNotFound();
-        }
-    }, 1000); 
+    var timeout = setTimeout(function() {
+        document.body.removeChild(iframe);
+        handleMinecraftNotFound();
+    }, 3000); 
+    iframe.onload = function() {
+        clearTimeout(timeout); 
+    };
 }
 function handleMinecraftNotFound() {
+    alert('无法打开 Minecraft，可能未安装或浏览器不支持 Minecraft 协议。');
     var deviceType = getDeviceType();
     switch(deviceType) {
         case 'Windows':
