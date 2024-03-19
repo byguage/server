@@ -112,7 +112,7 @@ document.addEventListener('visibilitychange', function() {
 function checkSystemDialogClosed() {
     var interval = setInterval(function() {
         if (!isSystemDialogOpened) {
-            clearInterval(interval); // 清除循环
+            clearInterval(interval); 
             if (!isMinecraftOpened) {
                 handleMinecraftNotFound();
             }
