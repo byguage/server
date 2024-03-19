@@ -94,8 +94,9 @@ function openMinecraft(event) {
         document.body.removeChild(iframe);
         if (isSystemDialogOpened) {
                 if (isMinecraftOpened) {
-                    alert('打开 Minecraft 超时2');
+                    alert('打开 Minecraft 超时1');
                 } else {
+                    alert('打开 Minecraft 超时2');
                     handleMinecraftNotFound();
                 }
             }
@@ -112,13 +113,10 @@ document.addEventListener('visibilitychange', function() {
         setTimeout(function() {
             if (isSystemDialogOpened) {
                 if (isMinecraftOpened) {
-                    alert('打开 Minecraft 超时1');
+                    alert('打开 Minecraft 超时3');
                 } else {
-                    if (!isMinecraftOpened) {
-                        alert('打开 Minecraft 超时');
-                    } else {
+                    alert('打开 Minecraft 超时4');
                     handleMinecraftNotFound();
-                  }
                }
             }
         }, isMobileDevice() ? 2000 : 0); 
