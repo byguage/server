@@ -92,7 +92,10 @@ function openMinecraft(event) {
     document.body.appendChild(iframe);
     setTimeout(function() {
         document.body.removeChild(iframe);
-        if (!isMinecraftOpened && !isSystemDialogOpened) {
+        if (!isMinecraftOpened) {
+          if (!isSystemDialogOpened) {
+              alert('打开 Minecraft成功');
+          }
             alert('无法打开 Minecraft，可能未安装或已取消打开或浏览器不支持 Minecraft 协议1');
             handleMinecraftNotFound();
         }
