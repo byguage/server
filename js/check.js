@@ -105,8 +105,12 @@ var isSystemDialogOpened = false;
 document.addEventListener('visibilitychange', function() {
     if (document.visibilityState === 'hidden') {
         setTimeout(function() {
-            if (isSystemDialogOpened && !isMinecraftOpened) {
-                handleMinecraftNotFound();
+            if (isSystemDialogOpened) {
+                if (!isMinecraftOpened) {
+                    alert('打开 Minecraft 超时');
+                } else {
+                    handleMinecraftNotFound();
+                }
             }
         }, isMobileDevice() ? 2000 : 0); 
     } else {
