@@ -92,40 +92,19 @@ function openMinecraft(event) {
     document.body.appendChild(iframe);
     setTimeout(function() {
         document.body.removeChild(iframe);
-        if (!isMinecraftOpened) {
-            handleMinecraftNotFound();
-        }
     }, 100);
 }
 var isMinecraftOpened = false; 
 window.addEventListener('blur', function() {
-    if (!tempBlurRemoved) {
-        isMinecraftOpened = true;
-    }
+    isMinecraftOpened = true;
+    setTimeout(function() {
+        if (!isMinecraftOpened) {
+            handleMinecraftNotFound();
+        }
+    }, 100);
 });
-window.addEventListener('focus', function() {
-    if (!isMinecraftOpened) {
-        handleMinecraftNotFound();
-    }
-});
-var tempBlurRemoved = false;
-function removeBlurEventListenerTemporarily() {
-    tempBlurRemoved = true;
-    window.removeEventListener('blur', handleBlurTemporarily);
-}
-function restoreBlurEventListener() {
-    tempBlurRemoved = false;
-    window.addEventListener('blur', handleBlurTemporarily);
-}
-function handleBlurTemporarily() {
-    if (!tempBlurRemoved) {
-        isMinecraftOpened = true;
-    }
-}
 function handleMinecraftNotFound() {
-    removeBlurEventListenerTemporarily();
     alert('无法打开 Minecraft，可能未安装或浏览器不支持 Minecraft 协议。');
-    restoreBlurEventListener();
     var deviceType = getDeviceType();
     switch(deviceType) {
         case 'Windows':
