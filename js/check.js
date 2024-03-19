@@ -84,6 +84,14 @@ function executeMinecraftLink(event) {
             return 'Unknown';
         }
     }
+var isMinecraftOpened = false; 
+window.addEventListener('blur', function() {
+    isMinecraftOpened = true;
+});
+var isSystemDialogOpened = false;
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
 function openMinecraft(event) {
     event.preventDefault(); 
     var iframe = document.createElement('iframe');
@@ -100,11 +108,6 @@ function openMinecraft(event) {
                 }
     }, isMobileDevice() ? 2000 : 100); 
 }
-var isMinecraftOpened = false; 
-window.addEventListener('blur', function() {
-    isMinecraftOpened = true;
-});
-var isSystemDialogOpened = false;
 document.addEventListener('visibilitychange', function() {
     if (document.visibilityState === 'hidden') {
         setTimeout(function() {
@@ -120,9 +123,6 @@ document.addEventListener('visibilitychange', function() {
         isSystemDialogOpened = false;
     }
 });
-function isMobileDevice() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
 function handleMinecraftNotFound() {
     alert('无法打开 Minecraft，可能未安装或浏览器不支持 Minecraft 协议。');
     var deviceType = getDeviceType();
