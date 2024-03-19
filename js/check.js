@@ -112,7 +112,10 @@ document.addEventListener('visibilitychange', function() {
     }
 });
 function handleMinecraftNotFound() {
-    alert('无法打开 Minecraft，可能未安装或浏览器不支持 Minecraft 协议。');
+    var deviceType = getDeviceType();
+    if (!isSystemDialogOpened && !isMinecraftOpened) {
+        alert('无法打开 Minecraft，可能未安装或浏览器不支持 Minecraft 协议。');
+        switch(deviceType) {
     var deviceType = getDeviceType();
     switch(deviceType) {
         case 'Windows':
