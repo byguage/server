@@ -104,7 +104,11 @@ window.addEventListener('blur', function() {
 var isSystemDialogOpened = false;
 document.addEventListener('visibilitychange', function() {
     if (document.visibilityState === 'hidden') {
-        isSystemDialogOpened = true;
+        setTimeout(function() {
+            if (isSystemDialogOpened && !isMinecraftOpened) {
+                handleMinecraftNotFound();
+            }
+        }, 500); 
     } else {
         isSystemDialogOpened = false;
     }
