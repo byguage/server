@@ -96,12 +96,9 @@ function openMinecraft(event) {
     var delayTime = isMobileDevice() ? 3000 : 100; 
     setTimeout(function() {
         document.body.removeChild(iframe);
-        if (!isMinecraftOpened) {
-            handleMinecraftNotFound();
-        }
+        handleMinecraftNotFound(); 
     }, delayTime); 
 }
-var isMinecraftOpened = false; 
 window.addEventListener('blur', function() {
     isMinecraftOpened = true;
 });
