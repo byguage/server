@@ -105,7 +105,7 @@ var isSystemDialogOpened = false;
 document.addEventListener('visibilitychange', function() {
     if (document.visibilityState === 'hidden') {
         setTimeout(function() {
-            if (isSystemDialogOpened) {
+            if (!isSystemDialogOpened) {
                 if (!isMinecraftOpened) {
                     alert('打开 Minecraft 超时');
                 } else {
