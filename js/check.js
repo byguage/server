@@ -112,17 +112,24 @@ function handleMinecraftNotFound() {
         alert('无法打开 Minecraft，可能未安装或浏览器不支持跳转。');
     }
     var deviceType = getDeviceType();
+    var downloadUrl;
     switch(deviceType) {
         case 'Windows':
-            window.location.href = 'https://mc.minebbs.com/#/windows';
+            downloadUrl = 'https://mc.minebbs.com/#/windows';
             break;
         case 'iOS':
-            window.location.href = 'https://mc.minebbs.com/#/ios';
+            downloadUrl = 'https://mc.minebbs.com/#/ios';
             break;
         case 'Android':
-            window.location.href = 'https://mc.minebbs.com/#/';
+            downloadUrl = 'https://mc.minebbs.com/#/';
             break;
         default:
             break;
+    }
+    if (downloadUrl) {
+        var result = confirm("是否下载基岩版?");
+        if (result) {
+            window.location.href = downloadUrl;
+        }
     }
 }
