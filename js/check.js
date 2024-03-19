@@ -92,30 +92,17 @@ function openMinecraft(event) {
     document.body.appendChild(iframe);
     setTimeout(function() {
         document.body.removeChild(iframe);
+        if (!isMinecraftOpened) {
+            handleMinecraftNotFound();
+        }
     }, 100);
 }
 var isMinecraftOpened = false; 
 window.addEventListener('blur', function() {
     isMinecraftOpened = true;
-    setTimeout(function() {
-        if (!isMinecraftOpened) {
-            handleMinecraftNotFound();
-        }
-    }, 100);
-});
-var isSystemDialogOpened = false;
-document.addEventListener('visibilitychange', function() {
-    if (document.visibilityState === 'hidden') {
-        isSystemDialogOpened = true;
-    } else {
-        isSystemDialogOpened = false;
-    }
 });
 function handleMinecraftNotFound() {
-    var deviceType = getDeviceType();
-    if (!isSystemDialogOpened && !isMinecraftOpened) {
-        alert('无法打开 Minecraft，可能未安装或浏览器不支持 Minecraft 协议。');
-        switch(deviceType) {
+    alert('无法打开 Minecraft，可能未安装或浏览器不支持 Minecraft 协议。');
     var deviceType = getDeviceType();
     switch(deviceType) {
         case 'Windows':
