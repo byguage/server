@@ -72,6 +72,9 @@ function executeMinecraftLink(event) {
         }
         return true; 
     }
+    function isMobileDevice() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
     function getDeviceType() {
         var userAgent = navigator.userAgent.toLowerCase();
         if (/windows/.test(userAgent)) {
@@ -90,19 +93,24 @@ function openMinecraft(event) {
     iframe.style.display = 'none';
     iframe.src = 'minecraft://';
     document.body.appendChild(iframe);
+    var delayTime = isMobileDevice() ? 3000 : 100; 
     setTimeout(function() {
         document.body.removeChild(iframe);
         if (!isMinecraftOpened) {
             handleMinecraftNotFound();
         }
-    }, 100);
+    }, delayTime); 
 }
 var isMinecraftOpened = false; 
 window.addEventListener('blur', function() {
     isMinecraftOpened = true;
 });
 function handleMinecraftNotFound() {
-    alert('无法打开 Minecraft，可能未安装或浏览器不支持 Minecraft 协议。');
+    if (isMobileDevice()) {
+        alert('无法打开 Minecraft，可能未安装或已取消打开或浏览器不支持跳转。');
+    } else {
+        alert('无法打开 Minecraft，可能未安装或浏览器不支持跳转。');
+    }
     var deviceType = getDeviceType();
     switch(deviceType) {
         case 'Windows':
