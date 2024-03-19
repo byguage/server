@@ -100,7 +100,7 @@ function openMinecraft(event) {
     document.body.appendChild(iframe);
     setTimeout(function() {
         document.body.removeChild(iframe);
-        if (isSystemDialogOpened) {
+        if (!isSystemDialogOpened) {
                 if (!isMinecraftOpened) {
                     alert('打开 Minecraft 超时');
                 } else {
@@ -111,7 +111,7 @@ function openMinecraft(event) {
 document.addEventListener('visibilitychange', function() {
     if (document.visibilityState === 'hidden') {
         setTimeout(function() {
-            if (isSystemDialogOpened) {
+            if (!isSystemDialogOpened) {
                 if (!isMinecraftOpened) {
                     alert('打开 Minecraft 超时');
                 } else {
