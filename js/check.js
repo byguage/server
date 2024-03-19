@@ -98,7 +98,7 @@ var isMinecraftOpened = false;
 window.addEventListener('blur', function() {
     isMinecraftOpened = true;
     setTimeout(function() {
-        if (!isMinecraftOpened && !isSystemDialogOpened) {
+        if (!isMinecraftOpened) {
             handleMinecraftNotFound();
         }
     }, 100);
