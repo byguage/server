@@ -92,14 +92,10 @@ function openMinecraft(event) {
     document.body.appendChild(iframe);
     setTimeout(function() {
         document.body.removeChild(iframe);
-        if (isSystemDialogOpened) {
-                if (isMinecraftOpened) {
-                    alert('打开 Minecraft 超时1');
-                } else {
-                    alert('打开 Minecraft 超时2');
-                    handleMinecraftNotFound();
-                }
-            }
+        if (!isMinecraftOpened && !isSystemDialogOpened) {
+            alert('无法打开 Minecraft，可能未安装或已取消打开或浏览器不支持 Minecraft 协议1');
+            handleMinecraftNotFound();
+        }
     }, isMobileDevice() ? 2000 : 100); 
 }
 var isMinecraftOpened = false; 
@@ -111,13 +107,9 @@ document.addEventListener('visibilitychange', function() {
     if (document.visibilityState === 'hidden') {
         isSystemDialogOpened = true; 
         setTimeout(function() {
-            if (isSystemDialogOpened) {
-                if (isMinecraftOpened) {
-                    alert('打开 Minecraft 超时3');
-                } else {
-                    alert('打开 Minecraft 超时4');
-                    handleMinecraftNotFound();
-               }
+            if (isSystemDialogOpened && !isMinecraftOpened) {
+                alert('无法打开 Minecraft，可能未安装或已取消打开或浏览器不支持 Minecraft 协议2');
+                handleMinecraftNotFound();
             }
         }, isMobileDevice() ? 2000 : 0); 
     } else {
@@ -129,7 +121,6 @@ function isMobileDevice() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 function handleMinecraftNotFound() {
-    alert('无法打开 Minecraft，可能未安装或已取消打开或浏览器不支持 Minecraft 协议。');
     var deviceType = getDeviceType();
     switch(deviceType) {
         case 'Windows':
