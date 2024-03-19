@@ -114,8 +114,12 @@ document.addEventListener('visibilitychange', function() {
                 if (isMinecraftOpened) {
                     alert('打开 Minecraft 超时');
                 } else {
+                    if (!isMinecraftOpened) {
+                        alert('打开 Minecraft 超时');
+                    } else {
                     handleMinecraftNotFound();
-                }
+                  }
+               }
             }
         }, isMobileDevice() ? 2000 : 0); 
     } else {
