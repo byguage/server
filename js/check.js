@@ -92,7 +92,9 @@ function openMinecraft(event) {
     document.body.appendChild(iframe);
     setTimeout(function() {
         document.body.removeChild(iframe);
-        checkSystemDialogClosed(); 
+        if (!isMinecraftOpened && !isSystemDialogOpened) {
+            handleMinecraftNotFound();
+        }
     }, 100);
 }
 var isMinecraftOpened = false; 
@@ -100,16 +102,19 @@ window.addEventListener('blur', function() {
     isMinecraftOpened = true;
 });
 var isSystemDialogOpened = false;
-function checkSystemDialogClosed() {
-    var interval = setInterval(function() {
-        if (!isSystemDialogOpened) {
-            clearInterval(interval); 
-            if (!isMinecraftOpened) {
+document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') {
+        // 系统提示框可能触发了文档不可见
+        // 在这里添加延迟执行代码以确保检测系统提示框
+        setTimeout(function() {
+            if (isSystemDialogOpened && !isMinecraftOpened) {
                 handleMinecraftNotFound();
             }
-        }
-    }, 100);
-}
+        }, 500); // 500毫秒延迟
+    } else {
+        isSystemDialogOpened = false;
+    }
+});
 function handleMinecraftNotFound() {
     alert('无法打开 Minecraft，可能未安装或浏览器不支持 Minecraft 协议。');
     var deviceType = getDeviceType();
