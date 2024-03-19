@@ -96,9 +96,12 @@ function openMinecraft(event) {
     var delayTime = isMobileDevice() ? 3000 : 100; 
     setTimeout(function() {
         document.body.removeChild(iframe);
-        handleMinecraftNotFound(); 
+        if (!isMinecraftOpened) {
+            handleMinecraftNotFound();
+        }
     }, delayTime); 
 }
+var isMinecraftOpened = false; 
 window.addEventListener('blur', function() {
     isMinecraftOpened = true;
 });
@@ -129,4 +132,3 @@ function handleMinecraftNotFound() {
             window.location.href = downloadUrl;
         }
     }
-}
