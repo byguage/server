@@ -104,15 +104,21 @@ window.addEventListener('blur', function() {
 var isSystemDialogOpened = false;
 document.addEventListener('visibilitychange', function() {
     if (document.visibilityState === 'hidden') {
-        setTimeout(function() {
-            if (isSystemDialogOpened && !isMinecraftOpened) {
-                handleMinecraftNotFound();
-            }
-        }, 500); 
+        setTimeout(checkSystemDialogClosed, 500); 
     } else {
         isSystemDialogOpened = false;
     }
 });
+function checkSystemDialogClosed() {
+    var interval = setInterval(function() {
+        if (!isSystemDialogOpened) {
+            clearInterval(interval); // 清除循环
+            if (!isMinecraftOpened) {
+                handleMinecraftNotFound();
+            }
+        }
+    }, 100);
+}
 function handleMinecraftNotFound() {
     alert('无法打开 Minecraft，可能未安装或浏览器不支持 Minecraft 协议。');
     var deviceType = getDeviceType();
@@ -130,3 +136,4 @@ function handleMinecraftNotFound() {
             break;
     }
 }
+
