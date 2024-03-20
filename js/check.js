@@ -96,6 +96,9 @@ function openMinecraft(event) {
     heckMinecraftSupport(false);
     }, delayTime); 
     iframe.src = 'minecraft://';
+    iframe.onload = function() {
+        checkMinecraftSupport(true);
+    };
     function checkMinecraftSupport(supported) {
         clearTimeout(timeout);
         if (supported) {
