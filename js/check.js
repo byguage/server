@@ -93,7 +93,7 @@ function openMinecraft(event) {
     document.body.appendChild(iframe);
     var delayTime = isMobileDevice() ? 3000 : 100; 
     var timeout = setTimeout(function() {
-    heckMinecraftSupport(false);
+    checkMinecraftSupport(false);
     }, delayTime); 
     iframe.src = 'minecraft://';
     iframe.onload = function() {
