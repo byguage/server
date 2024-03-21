@@ -95,7 +95,7 @@ function openMinecraft(event) {
     document.body.appendChild(iframe);
     setTimeout(function() {
         document.body.removeChild(iframe);
-        if (!isMinecraftOpened && !isSystemDialogOpened) {
+        if (!isMinecraftOpened) {
             handleMinecraftNotFound();
         }
     }, isMobileDevice() ? 2000 : 100); 
@@ -105,6 +105,11 @@ window.addEventListener('blur', function() {
     isMinecraftOpened = true;
 });
 var isSystemDialogOpened = false;
+window.addEventListener('pagehide', function() {
+    if (!isMinecraftOpened && !isSystemDialogOpened) {
+        handleMinecraftNotFound();
+    }
+});
 document.addEventListener('visibilitychange', function() {
     if (document.visibilityState === 'hidden') {
         isSystemDialogOpened = true; 
