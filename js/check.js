@@ -88,53 +88,40 @@ function executeMinecraftLink(event) {
         }
     }
 function openMinecraft(event) {
+    event.preventDefault(); 
     var iframe = document.createElement('iframe');
     iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-    var delayTime = isMobileDevice() ? 3000 : 100; 
-    var timeout = setTimeout(function() {
-    checkMinecraftSupport(false);
-    }, delayTime); 
     iframe.src = 'minecraft://';
-    iframe.onload = function() {
-        checkMinecraftSupport(true);
-    };
-    function checkMinecraftSupport(supported) {
-        clearTimeout(timeout);
-        if (supported) {
-            alert('已安装 Minecraft 应用。');
-            detectAndOpenMinecraft()
-        } else {
-            alert('未安装 Minecraft 应用。');
-            handleMinecraftNotFound()
-        }
+    document.body.appendChild(iframe);
+    setTimeout(function() {
         document.body.removeChild(iframe);
-    }
-    iframe.onerror = function() {
-        checkMinecraftSupport(false);
-    };
-    window.addEventListener('blur', function() {
-        checkMinecraftSupport(true);
-    });
-    event.preventDefault();
+        if (!isMinecraftOpened && !isSystemDialogOpened) {
+            handleMinecraftNotFound();
+        }
+    }, isMobileDevice() ? 2000 : 100); 
 }
-function detectAndOpenMinecraft() {
-    var isPopupBlocked = false;
-    var newWindow = window.open((event.currentTarget.href), '', 'width=0,height=0');
-    if (!newWindow || newWindow.closed || typeof newWindow === 'undefined' || typeof newWindow.closed === 'undefined') {
-        isPopupBlocked = true;
+var isMinecraftOpened = false; 
+window.addEventListener('blur', function() {
+    isMinecraftOpened = true;
+});
+var isSystemDialogOpened = false;
+document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') {
+        isSystemDialogOpened = true; 
+        setTimeout(function() {
+            if (isSystemDialogOpened && !isMinecraftOpened) {
+                handleMinecraftNotFound();
+            }
+        }, isMobileDevice() ? 2000 : 0); 
     } else {
-        newWindow.close();
+        isSystemDialogOpened = false; 
     }
-    if (isPopupBlocked) {
-        alert('浏览器阻止了打开 Minecraft 应用的尝试。');
-    } 
-}
+});
 function handleMinecraftNotFound() {
     if (isMobileDevice()) {
-        alert('无法打开 Minecraft，可能未安装或已取消打开或浏览器不支持跳转。');
+        alert('打开Minecraft超时，可能未安装或已取消打开或浏览器不支持跳转。');
     } else {
-        alert('无法打开 Minecraft，可能未安装或浏览器不支持跳转。');
+        alert('打开 Minecraft超时，可能未安装或浏览器不支持跳转。');
     }
     var deviceType = getDeviceType();
     var downloadUrl;
