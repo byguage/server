@@ -149,3 +149,4 @@ function handleMinecraftNotFound() {
             window.location.href = downloadUrl;
         }
     }
+}
