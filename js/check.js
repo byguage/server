@@ -91,7 +91,7 @@ function openMinecraft(event) {
     event.preventDefault(); 
     var iframe = document.createElement('iframe');
     iframe.style.display = 'none';
-    iframe.src = 'minecraft://';
+    iframe.src = event.currentTarget.href;
     document.body.appendChild(iframe);
     setTimeout(function() {
         document.body.removeChild(iframe);
