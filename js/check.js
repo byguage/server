@@ -74,6 +74,13 @@ function executeMinecraftLink(event) {
         }
         return true; 
     }
+    function isDesktop() {
+    var ua = navigator.userAgent.toLowerCase();
+    var desktopIdentifiers = ['windows', 'macintosh', 'linux', 'x11'];
+    return desktopIdentifiers.some(function(identifier) {
+        return ua.indexOf(identifier) !== -1;
+        });
+    }
     function isMobileDevice() {
         return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
